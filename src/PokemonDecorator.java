@@ -31,8 +31,8 @@ public abstract class PokemonDecorator extends Pokemon{
         return pokemon.getAttackMultiplier(p, type);
     }
 
-    //no clue what this method does.
-//    public int getAttackBonus(int type){
-//        return
-//    }
+    @Override
+    public int getAttackBonus(int type){
+        return pokemon.getAttackBonus(type);
+    }
 }
