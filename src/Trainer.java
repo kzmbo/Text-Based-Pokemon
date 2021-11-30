@@ -15,6 +15,7 @@ public class Trainer extends Entity {
     private int pokeballs;
     private Point location;
     private ArrayList<Pokemon> pokemon = new ArrayList<Pokemon>();
+    private final Map map = Map.getInstance();
 
     /**
      * Constructor for a trainer
@@ -27,7 +28,7 @@ public class Trainer extends Entity {
         this.money = 25;
         this.potions = 3;
         this.pokeballs = 1;
-        Map map = Map.getInstance();
+        //Map map = Map.getInstance();
     }
     /**
      * @return the amount of money that the trainer has.
@@ -116,7 +117,7 @@ public class Trainer extends Entity {
         if(p.getHp() <= 1){
             pokemon.add(p);
             p.heal();
-            map.removeOppAtLoc(getLocation());
+            map.getInstance().removeOppAtLoc(getLocation());
             return true;
         }else if (p.getHp() > 1 && p.getHp() < 8){
             int chanceToCatch = (int) (Math.random() * 100) + 1;
@@ -131,7 +132,7 @@ public class Trainer extends Entity {
             if (chanceToCatch <= 30){
                 pokemon.add(p);
                 p.heal();
-                map.removeOppAtLoc(getLocation());
+                map.getInstance().removeOppAtLoc(getLocation());
                 return true;
             }
         }
@@ -218,7 +219,7 @@ public class Trainer extends Entity {
       for(int i = 0; i < pokemon.size(); i++){
         int counter = (int)(Math.random()*2)+1;
         if(counter == 1){
-          pokemon.get(i).HpUp();
+            pokemon.get(i).AttackUp(pokemon.get(i)); //hp up
         }
         else{
           pokemon.get(i).AttackUp;
@@ -235,7 +236,7 @@ public class Trainer extends Entity {
           pokemon.get(i).HpDown();
         }
         else{
-          pokemon.get(i).AttackDown;
+          pokemon.get(i).AttackDown();
         }
       }
     }
