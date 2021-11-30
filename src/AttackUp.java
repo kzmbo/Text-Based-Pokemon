@@ -1,5 +1,5 @@
 public class AttackUp extends PokemonDecorator{
-    @Override
+
     public AttackUp(Pokemon p){
         super(p, "+ATK", p.getHp());
     }
