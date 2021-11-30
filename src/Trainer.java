@@ -211,7 +211,9 @@ public class Trainer extends Entity {
             i.heal();
         }
     }
-
+    /**
+    Since it is random the pokemon can either have more damage or more health
+    */
     public void buffAllPokemon(){
       for(int i = 0; i < pokemon.size(); i++){
         int counter = (int)(Math.random()*2)+1;
@@ -223,7 +225,9 @@ public class Trainer extends Entity {
         }
       }
     }
-
+    /**
+    Since it is random the pokemon can either have less damage or less health
+    */
     public void debuffAllPokemon(){
       for(int i = 0; i < pokemon.size(); i++){
         int counter = (int)(Math.random()*2)+1;
@@ -254,7 +258,10 @@ public class Trainer extends Entity {
         }
         return listOfPokemon;
     }
-    
+    /**
+    @param index - index is the number the user chosed
+    @return is returning the list with the pokemon they chosed to remove
+    */
     public Pokemon removePokemon(int index){
       return this.pokemon.remove(index - 1);
     }
