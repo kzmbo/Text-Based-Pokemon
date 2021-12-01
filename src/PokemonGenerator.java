@@ -1,3 +1,9 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.HashMap;
+
+
 public class PokemonGenerator extends Trainer {
     /**
      * Constructor for a trainer
@@ -7,8 +13,21 @@ public class PokemonGenerator extends Trainer {
      * @param n
      * @param p
      */
+	
+	HashMap<String,String> PokemonandTypes = new HashMap<String,String>();
+	
+	File PokemonList = new File("PokemonList.txt");
+	Scanner filescan = new Scanner(PokemonList);
+	
     public PokemonGenerator() {
         super("", null);
+    }
+    public Pokemon generateRandomPokemon() {
+    	return null;
+    }
+    
+    public Pokemon getPokemon() {
+    	return null;
     }
 
     public Pokemon addRandomBuff(Pokemon p){
