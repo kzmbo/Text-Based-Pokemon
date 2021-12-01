@@ -7,6 +7,18 @@ public class Main {
      * Lastly, a loop continues to run until the game is over, or if the user quits
      * */
     public static void main(String arg[]){
+        //testing pokemonGenerator
+        PokemonGenerator g = new PokemonGenerator();
+        Pokemon p = g.generateRandomPokemon(1);
+        System.out.println(p.toString());
+        p.takeDamage(10);
+        p = g.addRandomDebuff(p);
+        System.out.println(p.toString());
+        //end testing
+
+
+        System.out.println();
+        System.out.println();
         System.out.println("Prof. Oak: Hello there new trainer!");
         System.out.println("What's your name?");
         String name = CheckInput.getString();
@@ -245,8 +257,8 @@ public class Main {
                     }
                     System.out.println(attackingPokemon.getName() +" I CHOSE YOU!!!\n");
 
-                    System.out.println(attackingPokemon.getAttackMenu());
-                    int attack = attackingPokemon.getNumAttackMenuItems(atkType);
+                    System.out.println(attackingPokemon.getAttackMenu(1));
+                    int attack = 0; //attackingPokemon.getNumAttackMenuItems(atkType);
 
                     if(attack == 1){
                         System.out.println(attackingPokemon.getBasicMenu());

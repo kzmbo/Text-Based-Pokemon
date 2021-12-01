@@ -3,23 +3,15 @@ import java.lang.Math;
 /**
   Description: the pokemon class 
   */
-public abstract class Pokemon extends Entity{
+public abstract class Pokemon extends Entity {
   public static final double[][] battleTable = {{1,.5,2},{2,1,.5},{.5,2,1}};
   /**
   Description: creates the variable type
   @param: which pokemon it is
   */
   public Pokemon(String n, int h, int m){
-    super(n,24, 24);
+    super(n, h, m);
   }
-  /**
-  Description: getting the special menu
-  */
-  //public abstract String getSpecialMenu();
-  /**
-  Description: getting the number for which special attack
-  */
-  //public abstract int getNumSpecialMenuItems();
 
     /**
      * Description: doing the special attack
@@ -30,7 +22,7 @@ public abstract class Pokemon extends Entity{
     public String getAttackMenu(int atkType){
       String basicMenu = "1. Slam\n2. Tackle\n3. Punch";
       return basicMenu;
-    };
+    }
 
     /**
   Description: getting the basic menu
@@ -72,10 +64,7 @@ public abstract class Pokemon extends Entity{
   Description: getting which attacks
   @return: returning the attack menu
   */
-  public String getAttackMenu(){
-    String attackMenu = "1. Basic Attacks\n2. Special Attacks";
-    return attackMenu;
-  }
+
   /**
   Description: getting the users choice of which attack
   @return: returning the num the user chose
@@ -132,5 +121,9 @@ public abstract class Pokemon extends Entity{
     else{
       return 2;
     }
+  }
+
+  public int getAttackBonus(int atkType){
+    return 0;
   }
 }//end of class
