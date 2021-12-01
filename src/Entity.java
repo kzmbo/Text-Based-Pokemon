@@ -24,13 +24,7 @@ public abstract class Entity {
         this.hp = h;
         this.maxHp = mHp;
     }
-/**
- * 
- * @param name equates to the name of the entity
- */
-    public void setName(String name) {
-    	this.name = name;
-    }
+
  /**
   * getHp gets the hp of the Entity
   * @return returns the hp of said Entity
@@ -77,7 +71,7 @@ public abstract class Entity {
  * 
  * @return name of the entity and their hp
  */
-    public String toStringName(){
+    public String toString(){
         return this.name + " HP: " + getHp() + "/" + getMaxHp();
     }
 }

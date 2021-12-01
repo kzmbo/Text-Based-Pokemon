@@ -1,10 +1,9 @@
 public class AttackUp extends PokemonDecorator{
 
     public AttackUp(Pokemon p){
-        super(p, "+ATK", p.getHp());
+        super(p, "+ATK", 0);
     }
 
-    @Override
     public int getAttackBonus(){
         return (int) (Math.random() * 2) + 1;
     }

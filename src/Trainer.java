@@ -219,10 +219,10 @@ public class Trainer extends Entity {
       for(int i = 0; i < pokemon.size(); i++){
         int counter = (int)(Math.random()*2)+1;
         if(counter == 1){
-            pokemon.get(i).AttackUp(pokemon.get(i)); //hp up
+            //pokemon.get(i).AttackUp(pokemon.get(i)); //hp up
         }
         else{
-          pokemon.get(i).AttackUp;
+          //pokemon.get(i).AttackUp;
         }
       }
     }
@@ -233,10 +233,10 @@ public class Trainer extends Entity {
       for(int i = 0; i < pokemon.size(); i++){
         int counter = (int)(Math.random()*2)+1;
         if(counter == 1){
-          pokemon.get(i).HpDown();
+//          pokemon.get(i).HpDown();
         }
         else{
-          pokemon.get(i).AttackDown();
+//          pokemon.get(i).AttackDown();
         }
       }
     }

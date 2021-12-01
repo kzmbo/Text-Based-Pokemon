@@ -6,7 +6,8 @@ public class Fire extends Pokemon{
     @Override
     public String getAttackMenu(int atkType) {
         if(atkType == 1){
-            super.getAttackMenu();
+            String basicMenu = super.getAttackMenu(1);
+            return basicMenu;
         } else if(atkType == 2){
             String specialMenu = "1. Ember\n2. Fire Blast\n3. Fire Punch";
             return specialMenu;
@@ -103,15 +104,15 @@ public class Fire extends Pokemon{
     public int getAttackMultiplier(Pokemon p, int atkType){
         int damage = (int) (Math.random() * 3) + 1;
         if(getType() == 0){
-            double amplified = Pokemon.battleTable[0][0];
+            double amplified = battleTable[0][0];
             damage *= amplified;
         }
         else if(getType() == 1){
-            double amplified = Pokemon.battleTable[0][1];
+            double amplified = battleTable[0][1];
             damage *= amplified;
         }
         else{//getType () == 2
-            double amplified = Pokemon.battleTable[0][2];
+            double amplified = battleTable[0][2];
             damage *= amplified;
         }
         return damage;
