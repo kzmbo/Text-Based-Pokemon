@@ -260,6 +260,9 @@ public class Main {
                     System.out.println(attackingPokemon.getName() +" I CHOSE YOU!!!\n");
 
                     //Trainer's Pokemon Attack
+                    if (wild.getHp() <= 0){
+                        isTrainerAttacking = false;
+                    }
                     System.out.println(attackingPokemon.getAttackTypeMenu());
                     int atkType = CheckInput.getIntRange(1, 2);
                     System.out.println(attackingPokemon.getAttackMenu(atkType));
@@ -271,7 +274,7 @@ public class Main {
                     int wildAttackType = (int) (Math.random() * wild.getNumAttackTypeMenuItems()) + 1;
                     int wildMove = (int) (Math.random() * wild.getNumAttackMenuItems(wildAttackType)) + 1;
                     System.out.println("----------------------------------------------------------------");
-                    System.out.println(wild.attack(attackingPokemon, wildAttackType, wildMove));
+                    System.out.println("Your " + wild.attack(attackingPokemon, wildAttackType, wildMove) + "atkType: " + wildAttackType);
                     System.out.println("==================================================================\n");
 
                 } else if (choice == 2) {
@@ -290,17 +293,35 @@ public class Main {
                     }
                 } else if (choice == 3) {
                     if (t.hasPokeball()){
-                        if (t.catchPokemon(wild)){
+                        if(t.getNumPokemon() > 7){
+                            System.out.println("Choose a pokemon to release.");
+                            System.out.println(t.getPokemonList());
+                            int remove = CheckInput.getIntRange(1, t.getNumPokemon());
+                            t.catchPokemon(wild);
+                            System.out.println("Sorry, " + t.getPokemon(remove - 1).getName() + ". I have to let you free. See you around.");
+                            System.out.println(t.getPokemon(remove - 1).getName() + " has been removed from your collection.");
+                            t.removePokemon(remove);
+
+
                             System.out.println("You caught " + wild.getName());
                             System.out.println("--" + wild.getName() + "-- is healed");
                             System.out.println(t.toString());
                             System.out.println(t.getPokemonList());
                             isTrainerAttacking = false;
-                        } else {
-                            System.out.println("Oh no! " + wild.getName() + " has escaped!");
+                        }else {
+                            if (t.catchPokemon(wild)){
+                                System.out.println("You caught " + wild.getName());
+                                System.out.println("--" + wild.getName() + "-- is healed");
+                                System.out.println(t.toString());
+                                System.out.println(t.getPokemonList());
+                                isTrainerAttacking = false;
+                            } else {
+                                System.out.println("Oh no! " + wild.getName() + " has escaped!");
+                            }
                         }
                     }else{
-                        System.out.println("You kidding me!! Outta pokeballs. I might have to bail outta this one.");
+                        System.out.println("You kidding me!! Outta pokeballs. I gotta bail outta this one.");
+                        isTrainerAttacking = false;
                     }
                 } else {
                     System.out.println("Shucks! Let's book it!");
