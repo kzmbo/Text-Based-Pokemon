@@ -75,10 +75,8 @@ public class Fire extends Pokemon{
      * 1 - water
      * 2 - grass
      * */
-    //TODO: remove the comment when the getNumAttackMenuItems is implemented.
-    //@Override
+    @Override
     public double getAttackMultiplier(Pokemon p, int atkType){
-
         if (atkType == 1){
             p.getAttackMultiplier(p, atkType);
         } else if (atkType == 2){
@@ -93,20 +91,6 @@ public class Fire extends Pokemon{
                 damage = battleTable[0][2];
             }
             return damage;
-
-        int damage = (int) (Math.random() * 3) + 1;
-        if(getType() == 0){
-            double amplified = battleTable[0][0];
-            damage *= amplified;
         }
-        else if(getType() == 1){
-            double amplified = battleTable[0][1];
-            damage *= amplified;
-        }
-        else{//getType () == 2
-            double amplified = battleTable[0][2];
-            damage *= amplified;
-        }
-        return 0;
     }
 }
