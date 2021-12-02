@@ -49,24 +49,21 @@ public class Fire extends Pokemon{
      * */
     @Override
     public int getAttackDamage(int atkType, int move){
-        int specialDamage = 0;
         if(atkType == 1){
             return super.getAttackDamage(atkType,move);
         }else if (atkType == 2){
             if(move == 1){
-                specialDamage = (int)(Math.random()*3)+0;
+                int specialDamage = (int)(Math.random()*3)+0;
                 return specialDamage;
             }else if (move == 2){
-                specialDamage = (int) (Math.random() * 4) + 1;
+                int specialDamage = (int) (Math.random() * 4) + 1;
                 return specialDamage;
             }else if (move == 3){
-                specialDamage = (int) (Math.random() * 3) + 1;
-                return specialDamage;
-            }else{
+                int specialDamage = (int) (Math.random() * 3) + 1;
                 return specialDamage;
             }
         }
-        return 0;
+        return 1;
     }
 
     /**
@@ -78,20 +75,23 @@ public class Fire extends Pokemon{
     @Override
     public double getAttackMultiplier(Pokemon p, int atkType){
         if (atkType == 1){
-            p.getAttackMultiplier(p, atkType);
+            super.getAttackMultiplier(p, atkType);
         } else if (atkType == 2){
-            double damage = 0;
             if(getType() == 0){
-                damage = battleTable[0][0];
+                double damage = battleTable[0][0];
+                return damage;
             }
             else if(getType() == 1){
-                damage = battleTable[0][1];
+                double damage = battleTable[0][1];
+                return damage;
             }
             else{//getType () == 2
-                damage = battleTable[0][2];
+                double damage = battleTable[0][2];
+                return damage;
             }
-            return damage;
         }
-        return 0;
+
+        return 1;
+
     }
 }

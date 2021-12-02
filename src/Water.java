@@ -50,35 +50,21 @@ public class Water extends Pokemon{
 	@Override
 	public int getAttackDamage(int atkType, int move){
 		if(atkType == 1){
-			int basicDamage = 0;
-			if(move == 1){
-				basicDamage = (int)(Math.random() * 5);
-				return basicDamage;
-			}else if (move == 2){
-				basicDamage = (int)(Math.random() * 3) + 2;
-				return basicDamage;
-			}else if (move == 3){
-				basicDamage = (int)(Math.random() * 4) + 1;
-				return basicDamage;
-			}else{
-				return basicDamage;
-			}
+			return super.getAttackDamage(atkType, move);
 		}else if (atkType == 2){
-			int specialDamage = 0;
 			if(move == 1){
-				specialDamage = (int)(Math.random()*5)+0;
+				int specialDamage = (int)(Math.random()*5)+0;
 				return specialDamage;
 			}else if (move == 2){
-				specialDamage = (int) (Math.random() * 3) + 1;
+				int specialDamage = (int) (Math.random() * 3) + 1;
 				return specialDamage;
 			}else if (move == 3){
-				specialDamage = (int) (Math.random() * 4) + 1;
-				return specialDamage;
-			}else{
+				int specialDamage = (int) (Math.random() * 4) + 1;
 				return specialDamage;
 			}
+			return 1;
 		}
-		return 0;
+		return 1;
 	}
 
 /**
@@ -87,7 +73,7 @@ public class Water extends Pokemon{
 	@Override
 	public double getAttackMultiplier(Pokemon p, int atkType){
 		if(atkType == 1){
-			p.getAttackMultiplier(p, atkType);
+			super.getAttackMultiplier(p, atkType);
 		} else if (atkType == 2){
 			double damage = 0;
 			if(getType() == 0){
@@ -101,6 +87,6 @@ public class Water extends Pokemon{
 			}
 			return damage;
 		}
-		return 0;
+		return 1;
 	}
 }

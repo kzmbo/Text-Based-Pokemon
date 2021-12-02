@@ -32,45 +32,40 @@ public abstract class Pokemon extends Entity{
   }
 
   public String attack(Pokemon p, int atkType, int move){
-    int damage = (int) (this.getAttackDamage(atkType, move) * this.getAttackMultiplier(p,atkType)) + this.getAttackBonus(atkType);
+    int damage = (int) (getAttackDamage(atkType, move) * getAttackMultiplier(p,atkType)) + getAttackBonus(atkType);
     p.takeDamage(damage);
 
-    String attackString = p.getName() + "is " + this.getAttackString(atkType,move) + p.getName()+" and takes " + damage + " damage.";
+    String attackString = p.getName() + " " + getAttackString(atkType,move) + " and takes " + damage + " damage.";
     return attackString;
   }
 
   public String getAttackString(int atkType, int move){
     if(move == 1){
-      return "SLAMMED";
+      return "is SLAMMED";
     }
     else if(move == 2){
-      return "TACKLED";
+      return "is TACKLED";
     }
     else{
-      return "PUNCHED";
+      return "is PUNCHED";
     }
   }
 
   public int getAttackDamage(int atkType, int move){
-    int damage = 0;
     if(move == 1){
-      damage = (int)(Math.random()*5);
+      int damage = (int)(Math.random()*5);
+      return damage;
+    } else if(move == 2){
+      int damage = (int)(Math.random()*3)+2;
+      return damage;
+    } else{
+      int damage = (int)(Math.random()*4)+1;
+      return damage;
     }
-    else if(move == 2){
-      damage = (int)(Math.random()*3)+2;
-    }
-    else{
-      damage = (int)(Math.random()*4)+1;
-    }
-    return damage;
   }
 
   public double getAttackMultiplier(Pokemon p, int atkType){
-    if (atkType == 1){
       return 1;
-    } else {
-      return 0;
-    }
   }
 
   public int getAttackBonus(int atkType){
