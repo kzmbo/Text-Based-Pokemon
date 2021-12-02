@@ -92,5 +92,6 @@ public class Fire extends Pokemon{
             }
             return damage;
         }
+        return 0;
     }
 }
