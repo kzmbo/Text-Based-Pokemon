@@ -274,7 +274,7 @@ public class Main {
                     int wildAttackType = (int) (Math.random() * wild.getNumAttackTypeMenuItems()) + 1;
                     int wildMove = (int) (Math.random() * wild.getNumAttackMenuItems(wildAttackType)) + 1;
                     System.out.println("----------------------------------------------------------------");
-                    System.out.println("Your " + wild.attack(attackingPokemon, wildAttackType, wildMove) + "atkType: " + wildAttackType);
+                    System.out.println("Your " + wild.attack(attackingPokemon, wildAttackType, wildMove));
                     System.out.println("==================================================================\n");
 
                 } else if (choice == 2) {
