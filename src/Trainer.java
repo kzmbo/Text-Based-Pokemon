@@ -28,7 +28,8 @@ public class Trainer extends Entity {
         this.money = 25;
         this.potions = 3;
         this.pokeballs = 1;
-        //Map map = Map.getInstance();
+        map.generateArea(1);
+        this.location = map.findStartLocation();
     }
     /**
      * @return the amount of money that the trainer has.
@@ -218,27 +219,29 @@ public class Trainer extends Entity {
     public void buffAllPokemon(){
       for(int i = 0; i < pokemon.size(); i++){
         int counter = (int)(Math.random()*2)+1;
-        if(counter == 1){
-            //pokemon.get(i).AttackUp(pokemon.get(i)); //hp up
-        }
-        else{
-          //pokemon.get(i).AttackUp;
-        }
+          Pokemon temp;
+          if(counter == 1){
+              temp = new HpUp(pokemon.get(i));
+          } else {
+              temp = new AttackUp(pokemon.get(i));
+          }
+          pokemon.remove(i);
+          pokemon.add(i, temp);
       }
     }
     /**
     Since it is random the pokemon can either have less damage or less health
     */
-    public void debuffAllPokemon(){
-      for(int i = 0; i < pokemon.size(); i++){
+    public void debuffPokemon(int index){
+        Pokemon temp;
         int counter = (int)(Math.random()*2)+1;
         if(counter == 1){
-//          pokemon.get(i).HpDown();
+            temp = new HpDown(pokemon.get(index));
+        } else {
+            temp = new AttackDown(pokemon.get(index));
         }
-        else{
-//          pokemon.get(i).AttackDown();
-        }
-      }
+        pokemon.remove(index);
+        pokemon.add(index, temp);
     }
     /**
      * @param index - index of the pokemon arraylist

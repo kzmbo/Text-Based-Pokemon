@@ -37,7 +37,7 @@ public class PokemonGenerator {
 	}
     
     public Pokemon generateRandomPokemon(int level) {
-		int randomNum = (int)(Math.random() * pokemon.size()-1) + 1;
+		int randomNum = (int)(Math.random() * pokemon.size()-1);
 		ArrayList<String> temp = new ArrayList<String>(pokemon.keySet());
 		String pokemonName = temp.get(randomNum);
 		String pokemonType = pokemon.get(pokemonName);
@@ -91,7 +91,6 @@ public class PokemonGenerator {
 			return temp;
 		} else if (x >= 11 && x < 20){
 			Pokemon temp = new AttackUp(p);
-			temp.takeDamage(1);
 			return temp;
 		}
 		return null;
@@ -105,7 +104,6 @@ public class PokemonGenerator {
 			p = new HpDown(p);
 		} else if (x >= 11 && x < 20){
 			p = new AttackDown(p);
-			p.takeDamage(1);
 		}
 		return p;
     }

@@ -7,18 +7,6 @@ public class Main {
      * Lastly, a loop continues to run until the game is over, or if the user quits
      * */
     public static void main(String arg[]){
-        //testing pokemonGenerator
-        PokemonGenerator g = new PokemonGenerator();
-        Pokemon p = g.generateRandomPokemon(1);
-        System.out.println(p.toString());
-        p.takeDamage(10);
-        p = g.addRandomDebuff(p);
-        System.out.println(p.toString());
-        //end testing
-
-
-        System.out.println();
-        System.out.println();
         System.out.println("Prof. Oak: Hello there new trainer!");
         System.out.println("What's your name?");
         String name = CheckInput.getString();
@@ -31,26 +19,34 @@ public class Main {
         int choice = CheckInput.getIntRange(1, 3);
 
         Trainer player;
-        Pokemon playerStartingPokemon = null;
-        Map currentMap = new Map();
+        Pokemon playerStartingPokemon;
+        PokemonGenerator generatePokemon = PokemonGenerator.getInstance();
+        Map currentMap = Map.getInstance();
         char currentChar = 'a';
         int currentMapIndex = 1;
 
         if (choice == 1) {
-//            playerStartingPokemon = new Charmander();
+            playerStartingPokemon = generatePokemon.getPokemon("Charmander");
             player = new Trainer(name, playerStartingPokemon);
         } else if (choice == 2) {
-//            playerStartingPokemon = new Bulbasaur();
+            playerStartingPokemon = generatePokemon.getPokemon("Bulbasaur");
             player = new Trainer(name, playerStartingPokemon);
         } else {
-//            playerStartingPokemon = new Squirtle();
+            playerStartingPokemon = generatePokemon.getPokemon("Squirtle");
             player = new Trainer(name, playerStartingPokemon);
         }
         System.out.println("I choose you..." + playerStartingPokemon.getName() + "\n");
+        Pokemon wild = generatePokemon.getPokemon("Squirtle");
+        wild.takeDamage(19);
+        player.catchPokemon(wild);
+
+        player.debuffPokemon(1);
 
         boolean isGameRunning = true;
         while(isGameRunning){
             System.out.println(player.toString());
+            System.out.println("Your Pokemon(s)");
+            System.out.println(player.getPokemonList());
             currentMap.displayMap(player.getLocation());
             int playerChoice = mainMenu();
             switch (playerChoice) {
@@ -93,43 +89,9 @@ public class Main {
                 } else if (currentChar == 'w') {
 //                    trainerAttack(player, chooseRandomPokemon());
                 } else if (currentChar == 'p') {
+
                     System.out.println("There's a stranger in the distance!");
-                    int selectEncounter = (int) (Math.random() * 12) + 1;
-                    if( selectEncounter ==  1){
-                        System.out.println("Hello there! the Poke Center is having a giveaway promotion! Here's a potion!");
-                        player.receivePotion();
-                    } else if (selectEncounter == 2) {
-                        System.out.println("Hello fellow trainer! Here, take this pokeball!");
-                        player.receivePokeBall();
-                    } else if (selectEncounter == 3) {
-                        System.out.println("Hello! I went to the gaming corner and got a ton of money! Here let me give you $10");
-                        player.receiveMoney(10);
-                    } else if (selectEncounter == 4) {
-                        System.out.println("Ahhhhhh!! The stranger assaulted me for no reason");
-                        player.takeDamage(10);
-                    } else if (selectEncounter == 5) {
-                        System.out.println("That's not a stranger! That's a herd of Tauros! they knocked you around.");
-                        player.takeDamage(5);
-                    } else if (selectEncounter == 6) {
-                        System.out.println("As you chat with the stranger, you hear in the distance 'TEAM ROCKET IS BLASTING OFF AGAIN!' those people never learn huh?");
-                    } else if (selectEncounter == 7) {
-                        System.out.println("It wasn't a stranger, it was a shiny pokemon! sadly it ran away before you could get close to catch it");
-                    } else if (selectEncounter == 8) {
-                        System.out.println("You approach the stranger, he seems to be asleep, there is a Jigglypuff on his lap holding a mic, best you walk away now.");
-                    } else if (selectEncounter == 9) {
-                        System.out.println("Its Professor Oak! he hands you some pokeballs to catch more pokemon.");
-                        player.receivePokeBall();
-                        player.receivePokeBall();
-                        player.receivePokeBall();
-                    } else if (selectEncounter == 10) {
-                        System.out.println("It turns out to the stranger was in fact an angry pokemon!");
-                        player.takeDamage(5);
-                    } else if (selectEncounter == 11) {
-                        System.out.println("It looks like the stranger is in a pokemon battle, you decide to watch, after the fight he notices you and gives you a potion for cheering her on.");
-                        player.receivePotion();
-                    } else if (selectEncounter == 12) {
-                        System.out.println("It turns out its the Pokemon League Champion! they tell you they are on a stroll and ask you not to tell anyone they were there.");
-                    }
+                    System.out.println(randomEvents(player));
                     currentMap.removeOppAtLoc(player.getLocation());
                     if(player.getHp() <= 0){
                         System.out.println(player.getName() + " is dead with HP:" + player.getHp() + "/" + player.getMaxHp());
@@ -203,6 +165,47 @@ public class Main {
                 break;
         }
         return 0;
+    }
+
+    public static String randomEvents (Trainer player){
+        int selectEncounter = (int) (Math.random() * 12) + 1;
+        String event = "";
+        if( selectEncounter ==  1){
+            event = "Hello there! the Poke Center is having a giveaway promotion! Here's a potion!";
+            player.receivePotion();
+        } else if (selectEncounter == 2) {
+            event = "Hello fellow trainer! Here, take this pokeball!";
+            player.receivePokeBall();
+        } else if (selectEncounter == 3) {
+            event = "Hello! I went to the gaming corner and got a ton of money! Here let me give you $10";
+            player.receiveMoney(10);
+        } else if (selectEncounter == 4) {
+            event = "Ahhhhhh!! The stranger assaulted me for no reason";
+            player.takeDamage(10);
+        } else if (selectEncounter == 5) {
+            event = "That's not a stranger! That's a herd of Tauros! they knocked you around.";
+            player.takeDamage(5);
+        } else if (selectEncounter == 6) {
+            event = "As you chat with the stranger, you hear in the distance 'TEAM ROCKET IS BLASTING OFF AGAIN!' those people never learn huh?";
+        } else if (selectEncounter == 7) {
+            event = "It wasn't a stranger, it was a shiny pokemon! sadly it ran away before you could get close to catch it";
+        } else if (selectEncounter == 8) {
+            event = "You approach the stranger, he seems to be asleep, there is a Jigglypuff on his lap holding a mic, best you walk away now.";
+        } else if (selectEncounter == 9) {
+            event = "Its Professor Oak! he hands you some pokeballs to catch more pokemon.";
+            player.receivePokeBall();
+            player.receivePokeBall();
+            player.receivePokeBall();
+        } else if (selectEncounter == 10) {
+            event = "It turns out to the stranger was in fact an angry pokemon!";
+            player.takeDamage(5);
+        } else if (selectEncounter == 11) {
+            event = "It looks like the stranger is in a pokemon battle, you decide to watch, after the fight he notices you and gives you a potion for cheering her on.";
+            player.receivePotion();
+        } else if (selectEncounter == 12) {
+            event = "It turns out its the Pokemon League Champion! they tell you they are on a stroll and ask you not to tell anyone they were there.";
+        }
+        return event;
     }
 
     /**
