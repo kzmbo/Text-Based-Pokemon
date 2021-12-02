@@ -263,14 +263,16 @@ public class Main {
                     System.out.println(attackingPokemon.getAttackTypeMenu());
                     int atkType = CheckInput.getIntRange(1, 2);
                     System.out.println(attackingPokemon.getAttackMenu(atkType));
-                    int move = CheckInput.getIntRange(1, 2);
-                    System.out.println(attackingPokemon.attack(wild, atkType, move));
+                    int move = CheckInput.getIntRange(1, 3);
+                    System.out.println("==================================================================");
+                    System.out.println("Wild " + attackingPokemon.attack(wild, atkType, move));
 
                     //Wild Pokemon Attack
-                    int wildAttackType = (int) (Math.random() + wild.getNumAttackTypeMenuItems()) + 1;
-                    int wildMove = (int) (Math.random() + wild.getNumAttackMenuItems(wildAttackType));
-                    System.out.println();
+                    int wildAttackType = (int) (Math.random() * wild.getNumAttackTypeMenuItems()) + 1;
+                    int wildMove = (int) (Math.random() * wild.getNumAttackMenuItems(wildAttackType)) + 1;
+                    System.out.println("----------------------------------------------------------------");
                     System.out.println(wild.attack(attackingPokemon, wildAttackType, wildMove));
+                    System.out.println("==================================================================\n");
 
                 } else if (choice == 2) {
                     if (t.hasPotion()){

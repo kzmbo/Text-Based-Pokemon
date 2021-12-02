@@ -38,22 +38,21 @@ public class Grass extends Pokemon{
 
     @Override
     public int getAttackDamage(int atkType, int move){
-      int damage = 0;
       if(atkType == 1){
         super.getAttackDamage(atkType,move);
-      } else{
+      } else {
         if(move == 1){
-          damage = (int)(Math.random()*3);
+          int damage = (int)(Math.random()*3);
+          return damage;
+        } else if(move == 2){
+          int damage = (int)(Math.random()*4)+2;
+          return damage;
+        } else if (move == 3){
+          int damage = (int)(Math.random()*5);
+          return damage;
         }
-        else if(move == 2){
-          damage = (int)(Math.random()*4)+2;
-        }
-        else if (move == 3){
-          damage = (int)(Math.random()*5);
-        }
-        return damage;
       }
-      return 0;
+      return 1;
     }
 
     @Override
@@ -61,16 +60,15 @@ public class Grass extends Pokemon{
         if(atkType == 1){
           super.getAttackMultiplier(p, atkType);
         } else if (atkType == 2){
-          double damageMult = 0;
           if (getType() == 0) {
-            damageMult = Pokemon.battleTable[2][0];
+            double damageMult = Pokemon.battleTable[2][0];
           } else if (getType() == 1) {
-            damageMult = Pokemon.battleTable[2][1];
+            double damageMult = Pokemon.battleTable[2][1];
           } else {
-            damageMult = Pokemon.battleTable[2][2];
+            double damageMult = Pokemon.battleTable[2][2];
+            return damageMult;
           }
-          return damageMult;
         }
-        return 0;
+        return 1;
     }
 }//end of class
