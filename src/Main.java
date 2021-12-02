@@ -103,7 +103,7 @@ public class Main {
                         System.out.println("Hello there " + player.getName() + "! Lets get your pokemons healed up");
                         player.healAllPokemon();
                         System.out.println("...");
-                        System.out.println("Take a look at all your pokemons");
+                        System.out.println("Take a look at all your pokemons.");
                         System.out.println(player.getPokemonList());
                         System.out.println("All patched up now! You go on now!");
                     }else if (x == 2){
@@ -190,7 +190,7 @@ public class Main {
         } else if (selectEncounter == 8) {
             event = "You approach the stranger, he seems to be asleep, there is a Jigglypuff on his lap holding a mic, best you walk away now.";
         } else if (selectEncounter == 9) {
-            event = "Its Professor Oak! he hands you some pokeballs to catch more pokemon.";
+            event = "Its Professor Oak! He hands you some pokeballs to catch more pokemon.";
             player.receivePokeBall();
             player.receivePokeBall();
             player.receivePokeBall();
@@ -201,7 +201,7 @@ public class Main {
             event = "It looks like the stranger is in a pokemon battle, you decide to watch, after the fight he notices you and gives you a potion for cheering her on.";
             player.receivePotion();
         } else if (selectEncounter == 12) {
-            event = "It turns out its the Pokemon League Champion! they tell you they are on a stroll and ask you not to tell anyone they were there.";
+            event = "It turns out its the Pokemon League Champion! They tell you they are on a stroll and ask you not to tell anyone they were there.";
         }
         return event;
     }
