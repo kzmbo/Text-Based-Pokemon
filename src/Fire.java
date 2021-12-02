@@ -14,14 +14,12 @@ public class Fire extends Pokemon{
         
     }
 
-    //TODO: remove the comment when the getNumAttackMenuItems is implemented.
     @Override
     public int getNumAttackMenuItems(int atkType) {
-        return atkType = 3;
+        return 3;
     }
 
-    //TODO: remove the comment when the getNumAttackMenuItems is implemented.
-    //@Override
+    @Override
     public String getAttackString(int atkType, int move) {
         if(atkType == 1){
             return super.getAttackString(atkType,move);
@@ -49,8 +47,7 @@ public class Fire extends Pokemon{
      *
      *
      * */
-    //TODO: remove the slashes when the getAttackDamage is implemented.
-    //@Override
+    @Override
     public int getAttackDamage(int atkType, int move){
         int specialDamage = 0;
         if(atkType == 1){
@@ -81,6 +78,22 @@ public class Fire extends Pokemon{
     //TODO: remove the comment when the getNumAttackMenuItems is implemented.
     //@Override
     public double getAttackMultiplier(Pokemon p, int atkType){
+
+        if (atkType == 1){
+            p.getAttackMultiplier(p, atkType);
+        } else if (atkType == 2){
+            double damage = 0;
+            if(getType() == 0){
+                damage = battleTable[0][0];
+            }
+            else if(getType() == 1){
+                damage = battleTable[0][1];
+            }
+            else{//getType () == 2
+                damage = battleTable[0][2];
+            }
+            return damage;
+
         int damage = (int) (Math.random() * 3) + 1;
         if(getType() == 0){
             double amplified = battleTable[0][0];
@@ -94,6 +107,6 @@ public class Fire extends Pokemon{
             double amplified = battleTable[0][2];
             damage *= amplified;
         }
-        return damage;
+        return 0;
     }
 }

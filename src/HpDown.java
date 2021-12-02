@@ -1,5 +1,6 @@
 public class HpDown extends PokemonDecorator{
-  HpDown(Pokemon p){
+
+  public HpDown(Pokemon p){
     super(p," -HP",-(int)(Math.random()*2)+1);;
   }
 
