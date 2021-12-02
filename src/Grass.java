@@ -59,7 +59,7 @@ public class Grass extends Pokemon{
     @Override
     public double getAttackMultiplier(Pokemon p, int atkType){
         if(atkType == 1){
-          p.getAttackMultiplier(p, atkType);
+          super.getAttackMultiplier(p, atkType);
         } else if (atkType == 2){
           double damageMult = 0;
           if (getType() == 0) {
