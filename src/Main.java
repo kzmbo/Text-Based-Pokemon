@@ -264,9 +264,9 @@ public class Main {
                     int attack = 0; //attackingPokemon.getNumAttackMenuItems(atkType);
 
                     if(attack == 1){
-                        System.out.println(attackingPokemon.getBasicMenu());
-                        int num = attackingPokemon.getNumBasicMenuItems();
-                        System.out.println(attackingPokemon.basicAttack(wild,num));
+//                        System.out.println(attackingPokemon.getBasicMenu());
+//                        int num = attackingPokemon.getNumBasicMenuItems();
+//                        System.out.println(attackingPokemon.basicAttack(wild,num));
                     } else{
 //                        System.out.println(attackingPokemon.getSpecialMenu());
 //                        int num = attackingPokemon.getNumSpecialMenuItems();
@@ -276,7 +276,7 @@ public class Main {
                     int wildAttack = (int) (Math.random() + 1) + 1;
                     if(wildAttack == 1) {
                         int wildNum = (int) (Math.random() + 2) + 1;
-                        System.out.println(wild.basicAttack(attackingPokemon, wildNum));
+                       //System.out.println(wild.basicAttack(attackingPokemon, wildNum));
                     }
                     else {
                         int wildNum = (int) (Math.random() + 2) + 1;

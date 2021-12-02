@@ -56,11 +56,11 @@ public class PokemonGenerator {
 			return p;
 		}else if(pokemonType.equals("Grass")){
 			System.out.println(pokemonName + ": Grass type");
-//			Pokemon p = new Grass(pokemonName, 20, 20);
-//			if (level >= 3){
-//				p = new AttackUp( new HpUp(p) );
-//			}
-//			return p;
+			Pokemon p = new Grass(pokemonName, 20, 20);
+			if (level >= 3){
+				p = new AttackUp( new HpUp(p) );
+			}
+			return p;
 		}
 		return null;
     }
@@ -73,7 +73,7 @@ public class PokemonGenerator {
 			} else if (pokemonType.equals("Water")){
 				return new Water(name, 20, 20);
 			}else if(pokemonType.equals("Grass")){
-//				return new Grass(pokemonName, 20, 20);
+				return new Grass(name, 20, 20);
 			}
 			return null;
 		} catch (Exception e){

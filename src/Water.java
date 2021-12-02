@@ -16,10 +16,12 @@ public class Water extends Pokemon{
 		 return null;
 	 }
 
-	 public int getnumAttackMenuItem(int atkType) {
-		 return atkType = 3;
+	 @Override
+	 public int getNumAttackMenuItems(int atkType) {
+		 return 3;
 	 }
-	 
+
+	 @Override
 	 public String getAttackString(int atkType, int move) {
 	        if(atkType == 1){
 	            if(move == 1){
@@ -42,60 +44,63 @@ public class Water extends Pokemon{
 	                return "OFFED";
 	            }
 	        }
-	        return null;
+			return null;
 	}
 
-	 public int getAttackDamage(int atkType, int move){
-	        if(atkType == 1){
-	            int basicDamage = 0;
-	            if(move == 1){
-	                basicDamage = (int)(Math.random() * 5);
-	                return basicDamage;
-	            }else if (move == 2){
-	                basicDamage = (int)(Math.random() * 3) + 2;
-	                return basicDamage;
-	            }else if (move == 3){
-	                basicDamage = (int)(Math.random() * 4) + 1;
-	                return basicDamage;
-	            }else{
-	                return basicDamage;
-	            }
-	        }else if (atkType == 2){
-	            int specialDamage = 0;
-	            if(move == 1){
-	                specialDamage = (int)(Math.random()*5)+0;
-	                return specialDamage;
-	            }else if (move == 2){
-	                specialDamage = (int) (Math.random() * 3) + 1;
-	                return specialDamage;
-	            }else if (move == 3){
-	                specialDamage = (int) (Math.random() * 4) + 1;
-	                return specialDamage;
-	            }else{
-	                return specialDamage;
-	            }
-	        }
-	        return 0;
+	@Override
+	public int getAttackDamage(int atkType, int move){
+		if(atkType == 1){
+			int basicDamage = 0;
+			if(move == 1){
+				basicDamage = (int)(Math.random() * 5);
+				return basicDamage;
+			}else if (move == 2){
+				basicDamage = (int)(Math.random() * 3) + 2;
+				return basicDamage;
+			}else if (move == 3){
+				basicDamage = (int)(Math.random() * 4) + 1;
+				return basicDamage;
+			}else{
+				return basicDamage;
+			}
+		}else if (atkType == 2){
+			int specialDamage = 0;
+			if(move == 1){
+				specialDamage = (int)(Math.random()*5)+0;
+				return specialDamage;
+			}else if (move == 2){
+				specialDamage = (int) (Math.random() * 3) + 1;
+				return specialDamage;
+			}else if (move == 3){
+				specialDamage = (int) (Math.random() * 4) + 1;
+				return specialDamage;
+			}else{
+				return specialDamage;
+			}
+		}
+		return 0;
 	}
 
 /**
  *Done by Aidan Tristen Angel
  */
-
-	public int getAttackMultiplier(Pokemon p, int atkType){
-		int damage = (int) (Math.random() * 3) + 1;
-		if(getType() == 0){
-			double amplified = Pokemon.battleTable[0][0];
-			damage *= amplified;
+	@Override
+	public double getAttackMultiplier(Pokemon p, int atkType){
+		if(atkType == 1){
+			p.getAttackMultiplier(p, atkType);
+		} else if (atkType == 2){
+			double damage = 0;
+			if(getType() == 0){
+				damage = Pokemon.battleTable[0][0];
+			}
+			else if(getType() == 1){
+				damage = Pokemon.battleTable[0][1];
+			}
+			else{//getType () == 2
+				damage = Pokemon.battleTable[0][2];
+			}
+			return damage;
 		}
-		else if(getType() == 1){
-			double amplified = Pokemon.battleTable[0][1];
-			damage *= amplified;
-		}
-		else{//getType () == 2
-			double amplified = Pokemon.battleTable[0][2];
-			damage *= amplified;
-		}
-		return damage;
+		return 0;
 	}
 }

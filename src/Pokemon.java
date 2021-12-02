@@ -1,8 +1,8 @@
 import java.lang.Math;
-  /**
-  Description: the pokemon class 
-  */
-public abstract class Pokemon extends Entity implements PokemonDecorator{
+/**
+ Description: the pokemon class
+ */
+public abstract class Pokemon extends Entity{
   public static final double[][] battleTable = {{1,.5,2},{2,1,.5},{.5,2,1}};
 
   public Pokemon(String n, int h, int m){
@@ -19,13 +19,12 @@ public abstract class Pokemon extends Entity implements PokemonDecorator{
   }
 
   public String getAttackMenu(int atkType){
-   if(atkType == 1){
-     String basicMenu = "1. Slam\n2. Tackle\n3. Punch";
-     return basicMenu;
-   }
-   else{
-     return null;
-   }
+    if(atkType == 1){
+      String basicMenu = "1. Slam\n2. Tackle\n3. Punch";
+      return basicMenu;
+    }else{
+      return null;
+    }
   }
 
   public int getNumAttackMenuItems(int atkType){
@@ -33,8 +32,11 @@ public abstract class Pokemon extends Entity implements PokemonDecorator{
   }
 
   public String attack(Pokemon p, int atkType, int move){
-    int damage = ((int)*this.getAttackDamage(5,move)*this.getAttackMultiplier(p,atkType)) + this.getAttackBonus(atkType);
-    return ""+this.getName()+this.getAttackString(atkType,move)+p.getName()+" and deals "+damage+" damage.";
+    int damage = (int) (this.getAttackDamage(atkType, move) * this.getAttackMultiplier(p,atkType)) + this.getAttackBonus(atkType);
+    p.takeDamage(damage);
+
+    String attackString = p.getName() + "is " + this.getAttackString(atkType,move) + p.getName()+" and takes " + damage + " damage.";
+    return attackString;
   }
 
   public String getAttackString(int atkType, int move){
@@ -64,11 +66,15 @@ public abstract class Pokemon extends Entity implements PokemonDecorator{
   }
 
   public double getAttackMultiplier(Pokemon p, int atkType){
-
+    if (atkType == 1){
+      return 1;
+    } else {
+      return 0;
+    }
   }
 
   public int getAttackBonus(int atkType){
-
+    return 0;
   }
 
   public int getType(){
@@ -83,5 +89,5 @@ public abstract class Pokemon extends Entity implements PokemonDecorator{
     }
   }
 
-  
+
 }//end of the class

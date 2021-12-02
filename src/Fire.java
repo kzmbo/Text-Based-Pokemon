@@ -15,14 +15,12 @@ public class Fire extends Pokemon{
         return null;
     }
 
-    //TODO: remove the comment when the getNumAttackMenuItems is implemented.
     @Override
     public int getNumAttackMenuItems(int atkType) {
-        return atkType = 3;
+        return 3;
     }
 
-    //TODO: remove the comment when the getNumAttackMenuItems is implemented.
-    //@Override
+    @Override
     public String getAttackString(int atkType, int move) {
         if(atkType == 1){
             if(move == 1){
@@ -58,8 +56,7 @@ public class Fire extends Pokemon{
      *
      *
      * */
-    //TODO: remove the slashes when the getAttackDamage is implemented.
-    //@Override
+    @Override
     public int getAttackDamage(int atkType, int move){
         if(atkType == 1){
             int basicDamage = 0;
@@ -101,20 +98,22 @@ public class Fire extends Pokemon{
      * */
     //TODO: remove the comment when the getNumAttackMenuItems is implemented.
     //@Override
-    public int getAttackMultiplier(Pokemon p, int atkType){
-        int damage = (int) (Math.random() * 3) + 1;
-        if(getType() == 0){
-            double amplified = battleTable[0][0];
-            damage *= amplified;
+    public double getAttackMultiplier(Pokemon p, int atkType){
+        if (atkType == 1){
+            p.getAttackMultiplier(p, atkType);
+        } else if (atkType == 2){
+            double damage = 0;
+            if(getType() == 0){
+                damage = battleTable[0][0];
+            }
+            else if(getType() == 1){
+                damage = battleTable[0][1];
+            }
+            else{//getType () == 2
+                damage = battleTable[0][2];
+            }
+            return damage;
         }
-        else if(getType() == 1){
-            double amplified = battleTable[0][1];
-            damage *= amplified;
-        }
-        else{//getType () == 2
-            double amplified = battleTable[0][2];
-            damage *= amplified;
-        }
-        return damage;
+        return 0;
     }
 }
