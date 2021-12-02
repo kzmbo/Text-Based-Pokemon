@@ -42,16 +42,8 @@ public class Grass extends Pokemon{
   public int getAttackDamage(int atkType, int move){
     int damage = 0;
     if(atkType == 1){
-      if(move == 1){
-        damage = (int)(Math.random()*5);
-      }
-      else if(move == 2){
-        damage = (int)(Math.random()*3)+2;
-      }
-      else{
-        damage = (int)(Math.random()*4)+1;
-      }
-      return damage;
+      super.getAttackDamage(atkType,move);
+      return null
     }
     else{
       if(move == 1){
