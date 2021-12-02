@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Main {
 
     /**
@@ -36,12 +38,7 @@ public class Main {
             player = new Trainer(name, playerStartingPokemon);
         }
         System.out.println("I choose you..." + playerStartingPokemon.getName() + "\n");
-        Pokemon wild = generatePokemon.getPokemon("Squirtle");
-        wild.takeDamage(19);
-        player.catchPokemon(wild);
-
-        player.debuffPokemon(1);
-
+        System.out.println("\n\nStarting Game...\n\n");
         boolean isGameRunning = true;
         while(isGameRunning){
             System.out.println(player.toString());
@@ -87,9 +84,10 @@ public class Main {
                     }
                     currentMap.removeOppAtLoc(player.getLocation());
                 } else if (currentChar == 'w') {
-//                    trainerAttack(player, chooseRandomPokemon());
+                    Random rand = new Random();
+                    int level = rand.nextInt(3);
+                    trainerAttack(player, generatePokemon.generateRandomPokemon(level));
                 } else if (currentChar == 'p') {
-
                     System.out.println("There's a stranger in the distance!");
                     System.out.println(randomEvents(player));
                     currentMap.removeOppAtLoc(player.getLocation());
@@ -254,34 +252,26 @@ public class Main {
                     System.out.println(t.getPokemonList());
                     pokemonChosen = CheckInput.getIntRange(1,t.getNumPokemon());
                     Pokemon attackingPokemon = t.getPokemon(pokemonChosen - 1);
+
                     if(t.getPokemon(pokemonChosen - 1).getHp() <= 0){
                         System.out.println("Darn! " + t.getPokemon(pokemonChosen - 1).getName() + " is downed! Can't fight");
                         break;
                     }
                     System.out.println(attackingPokemon.getName() +" I CHOSE YOU!!!\n");
 
-                    System.out.println(attackingPokemon.getAttackMenu(1));
-                    int attack = 0; //attackingPokemon.getNumAttackMenuItems(atkType);
+                    //Trainer's Pokemon Attack
+                    System.out.println(attackingPokemon.getAttackTypeMenu());
+                    int atkType = CheckInput.getIntRange(1, 2);
+                    System.out.println(attackingPokemon.getAttackMenu(atkType));
+                    int move = CheckInput.getIntRange(1, 2);
+                    System.out.println(attackingPokemon.attack(wild, atkType, move));
 
-                    if(attack == 1){
-//                        System.out.println(attackingPokemon.getBasicMenu());
-//                        int num = attackingPokemon.getNumBasicMenuItems();
-//                        System.out.println(attackingPokemon.basicAttack(wild,num));
-                    } else{
-//                        System.out.println(attackingPokemon.getSpecialMenu());
-//                        int num = attackingPokemon.getNumSpecialMenuItems();
-//                        System.out.println(attackingPokemon.specialAttack(wild,num));
-                    }
+                    //Wild Pokemon Attack
+                    int wildAttackType = (int) (Math.random() + wild.getNumAttackTypeMenuItems()) + 1;
+                    int wildMove = (int) (Math.random() + wild.getNumAttackMenuItems(wildAttackType));
+                    System.out.println();
+                    System.out.println(wild.attack(attackingPokemon, wildAttackType, wildMove));
 
-                    int wildAttack = (int) (Math.random() + 1) + 1;
-                    if(wildAttack == 1) {
-                        int wildNum = (int) (Math.random() + 2) + 1;
-                       //System.out.println(wild.basicAttack(attackingPokemon, wildNum));
-                    }
-                    else {
-                        int wildNum = (int) (Math.random() + 2) + 1;
-//                        System.out.println(wild.specialAttack(attackingPokemon, wildNum));
-                    }
                 } else if (choice == 2) {
                     if (t.hasPotion()){
                         System.out.println("Choose a Pokemon to heal: ");
