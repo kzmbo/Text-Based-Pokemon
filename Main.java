@@ -113,7 +113,9 @@ public class Main {
                     } else{
                         System.out.println("Leaving city. Come on " + player.getPokemon(0) + ". Let's book it.");
                     }
-                    //
+                    /**
+                     * @author Aidan Tristen R. Angel
+                     */
                 } else if (currentChar == 'f') {
                 	System.out.println("Oh Look! Its a Gym!");
                     System.out.println("To go to the next area you have to beat the gym leader that resides within. ");
@@ -359,6 +361,9 @@ public class Main {
                             System.out.println(t.getPokemonList());
                             isTrainerAttacking = false;
                         }
+                        /**
+                         * @author Aidan Tristen R. Angel
+                         */
                         else if(name.contains("+ATK")){
                         	System.out.println("Hey! You can't catch this pokemon!");
                         	System.out.println("");
