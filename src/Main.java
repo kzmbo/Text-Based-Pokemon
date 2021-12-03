@@ -295,9 +295,10 @@ public class Main {
                         System.out.println("Choose a Pokemon to heal: ");
                         System.out.println(t.getPokemonList());
                         System.out.println("Exit. 0");
+                        System.out.println("==================================================================\n");
 
                         pokemonChosen = CheckInput.getIntRange(0,t.getNumPokemon());
-                        Pokemon temp = t.getPokemon(pokemonChosen);
+                        Pokemon temp = t.getPokemon(pokemonChosen-1);
                         if (pokemonChosen == 0){
                             System.out.println("Not now. Let save the potion for next time.\n");
                         }else{

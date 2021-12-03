@@ -85,7 +85,6 @@ public class PokemonGenerator {
     public Pokemon addRandomBuff(Pokemon p){
         Random rand = new Random();
 		int x = rand.nextInt(20);
-		System.out.println(x);
 		if(x < 11){
 			Pokemon temp = new HpUp(p);
 			return temp;
@@ -99,7 +98,6 @@ public class PokemonGenerator {
     public Pokemon addRandomDebuff(Pokemon p){
 		Random rand = new Random();
 		int x = rand.nextInt(20);
-		System.out.println(x);
 		if(x < 11){
 			p = new HpDown(p);
 		} else if (x >= 11 && x < 20){
