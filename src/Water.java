@@ -1,5 +1,9 @@
 public class Water extends Pokemon{
 	/**
+     * @author Aidan Tristen R. Angel
+     */
+	
+	/**
   Description: the constructor for grass type pokemon
   @param n - is the name
   @param h - is the hp

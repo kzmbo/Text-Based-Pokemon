@@ -4,6 +4,7 @@ public class AttackDown extends PokemonDecorator{
         super(p, "-ATK", 0);
     }
 
+    @Override
     public int getAttackBonus(int type){
         return -1;
     }

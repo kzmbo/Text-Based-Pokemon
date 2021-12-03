@@ -4,7 +4,8 @@ public class AttackUp extends PokemonDecorator{
         super(p, "+ATK", 0);
     }
 
-    public int getAttackBonus(){
+    @Override
+    public int getAttackBonus(int type){
         return (int) (Math.random() * 2) + 1;
     }
 }
