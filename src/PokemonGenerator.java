@@ -55,7 +55,6 @@ public class PokemonGenerator {
 			}
 			return p;
 		}else if(pokemonType.equals("Grass")){
-			System.out.println(pokemonName + ": Grass type");
 			Pokemon p = new Grass(pokemonName, 20, 20);
 			if (level >= 3){
 				p = new AttackUp( new HpUp(p) );
