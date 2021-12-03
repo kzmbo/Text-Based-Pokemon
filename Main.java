@@ -84,11 +84,9 @@ public class Main {
                     }
                     currentMap.removeOppAtLoc(player.getLocation());
                 } else if (currentChar == 'w') {
-                	 Random rand = new Random();
-                     int level = rand.nextInt(3);
-                     Pokemon wild_pokemon = generatePokemon.generateRandomPokemon(level);
-                     System.out.println("A wild " + wild_pokemon.getName() + " has appeared.");
-                     trainerAttack(player, wild_pokemon);
+                    Random rand = new Random();
+                    int level = rand.nextInt(3);
+                    trainerAttack(player, generatePokemon.generateRandomPokemon(level));
                 } else if (currentChar == 'p') {
                     System.out.println("There's a stranger in the distance!");
                     System.out.println(randomEvents(player));
@@ -113,37 +111,11 @@ public class Main {
                     } else{
                         System.out.println("Leaving city. Come on " + player.getPokemon(0) + ". Let's book it.");
                     }
-                    /**
-                     * @author Aidan Tristen R. Angel
-                     */
                 } else if (currentChar == 'f') {
-                	System.out.println("Oh Look! Its a Gym!");
-                    System.out.println("To go to the next area you have to beat the gym leader that resides within. ");
-                    System.out.println( "Be warned though, they use a random pokemon everytime!");
-                    System.out.println("Do you want to challenge the gym leader?");
+                    System.out.println("You have found a finish checkpoint!");
+                    System.out.println("Do you want to leave the current map?");
                     boolean leaveMap = CheckInput.getYesNo();
                     if (leaveMap) {
-                    	Random rand = new Random();
-                    	int level_max = 5;
-                    	int level_min = 3;
-                        int level = rand.nextInt(level_max - level_min)+ level_min;
-                        Pokemon Gym_Pokemon = generatePokemon.generateRandomPokemon(level);
-                        System.out.println();
-                        System.out.println("The Gym Leader sent out a "+Gym_Pokemon.getName());
-                        trainerAttack(player,Gym_Pokemon);
-                    	int usablePokemon = player.getNumPokemon();
-                    	for (int i = 0; i< player.getNumPokemon(); i++) {
-                    		if (player.getPokemon(i).getHp()<=0) {
-                    			usablePokemon -=1;
-                    		}
-                    	}
-                    	if (usablePokemon == 0) {
-                    		System.out.println("Uh Oh, looks like you lost this time, better heal up and challenge this gym when you are better prepared!");
-                    	}
-                    	else {
-                    		System.out.println("Nice! You Beat the Gym! Time to Move on to the next Area!");
-                    		System.out.println("Oh look!, your pokemon got stronger!");
-                    		player.buffAllPokemon();
                         if (currentMapIndex == 3) {
                             currentMapIndex = 1;
                         } else {
@@ -154,7 +126,6 @@ public class Main {
                     }
                 }
             }//end if statement
-        }
         }//end while loop
     }
 
@@ -195,7 +166,7 @@ public class Main {
     }
 
     public static String randomEvents (Trainer player){
-        int selectEncounter = (int) (Math.random() * 12) + 1;
+        int selectEncounter = (int) (Math.random() * 15) + 1;
         String event = "";
         if( selectEncounter ==  1){
             event = "Hello there! the Poke Center is having a giveaway promotion! Here's a potion!";
@@ -231,6 +202,15 @@ public class Main {
             player.receivePotion();
         } else if (selectEncounter == 12) {
             event = "It turns out its the Pokemon League Champion! They tell you they are on a stroll and ask you not to tell anyone they were there.";
+        } else if (selectEncounter == 13) {
+        	event = "Oh no! its not a person! its a rampaging Sycther! It attacks one of your pokemon!";
+        	player.debuffPokemon(0);
+        } else if (selectEncounter == 14) {
+        	event = "Uh oh! its a Koffing! it sprays one of your pokemon before you could scare it off!.";
+        	player.debuffPokemon(0);
+        } else if (selectEncounter == 15) {
+        	event = "Oops, turns out its a Jigglypuff! you and your pokemon cover their ears, but it notices and hits one of your pokemon in annoyance!";
+        	player.debuffPokemon(0);
         }
         return event;
     }
@@ -258,9 +238,8 @@ public class Main {
             PokemonGenerator pokemonGenerator = PokemonGenerator.getInstance();
             Pokemon wildPokemon = wild;
             int pokemonChosen = 0;
-            String name = wildPokemon.getName();
             System.out.println();
-            
+            System.out.println("A wild " + wildPokemon.getName() + " has appeared.");
 
             boolean isTrainerAttacking = true;
             while (isTrainerAttacking ){
@@ -360,19 +339,7 @@ public class Main {
                             System.out.println(t.toString());
                             System.out.println(t.getPokemonList());
                             isTrainerAttacking = false;
-                        }
-                        /**
-                         * @author Aidan Tristen R. Angel
-                         */
-                        else if(name.contains("+ATK")){
-                        	System.out.println("Hey! You can't catch this pokemon!");
-                        	System.out.println("");
-                        }
-                        else if(name.contains("+HP")){
-                        	System.out.println("Hey! You can't catch this pokemon!");
-                        	System.out.println("");
-                        }
-                        else {
+                        }else {
                             if (t.catchPokemon(wildPokemon)){
                                 System.out.println("You caught " + wildPokemon.getName());
                                 System.out.println("--" + wildPokemon.getName() + "-- is healed");
@@ -387,16 +354,7 @@ public class Main {
                         System.out.println("You kidding me!! Outta pokeballs. I gotta bail outta this one.");
                         isTrainerAttacking = false;
                     }
-                }
-                else if(name.contains("+ATK")){
-                	System.out.println("Hey! No running from this match!");
-                	System.out.println("");
-                }
-                else if(name.contains("+HP")){
-                	System.out.println("Hey! No running from this match!");
-                	System.out.println("");
-                }
-                else {
+                } else {
                     System.out.println("Shucks! Let's book it!");
                     System.out.println(wildPokemon.getName() + " is running away as well!");
                     int randomDirection = (int) (Math.random() * 2) + 1;
