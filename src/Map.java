@@ -99,7 +99,7 @@ public class Map implements Serializable {
 					if (i == (int) p.getY() && j == (int) p.getX()) {
 						System.out.print('*');
 					}else {
-						System.out.print((map[i][j] == 'c' || map[i][j] == 's') ? map[i][j] : 'x');
+						System.out.print((map[i][j] == 's') ? map[i][j] : 'x');
 					}
 					System.out.print(" ");
 				}
@@ -115,7 +115,7 @@ public class Map implements Serializable {
 					if (i == (int) p.getY() && j == (int) p.getX()) {
 						System.out.print('*');
 					}else {
-						System.out.print((revealed[i][j] == true || map[i][j] == 'c' || map[i][j] == 's') ? map[i][j] : 'x');
+						System.out.print((revealed[i][j] == true || map[i][j] == 's') ? map[i][j] : 'x');
 					}
 					System.out.print(" ");
 				}

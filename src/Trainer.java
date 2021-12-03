@@ -115,12 +115,12 @@ public class Trainer extends Entity {
      * */
     public boolean catchPokemon(Pokemon p){
         this.pokeballs -= 1;
-        if(p.getHp() <= 1){
+        if(p.getHp() <= 4){
             pokemon.add(p);
             p.heal();
             map.getInstance().removeOppAtLoc(getLocation());
             return true;
-        }else if (p.getHp() > 1 && p.getHp() < 8){
+        }else if (p.getHp() > 4 && p.getHp() < 8){
             int chanceToCatch = (int) (Math.random() * 100) + 1;
             if (chanceToCatch <= 70){
                 pokemon.add(p);
