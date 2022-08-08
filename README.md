@@ -35,15 +35,15 @@ Basic attacks consist of...
 
 These are the list of special attacks for each type
 
-** Fire **
+**Fire**
   - Ember (0-3 dmg)
   - Fire Blast (1-4 dmg)
   - Fire Punch (1-3 dmg)
-** Water **
+**Water**
   - Water Gun (2-5 dmg)
   - Bubble Beam (1-3 dmg)
   - Waterfall (1-4 dmg)
-** Grass **
+**Grass**
   - Vine Whip (1-3 dmg)
   - Razor Leaf (2-4 dmg)
   - Solar Beam (0-5 dmg)
