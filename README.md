@@ -6,7 +6,9 @@
 Learn and apply OOP concepts such as Inheritance, Abstraction, Polymorphism, Classes, Objects, Singleton, Decorator, Factory, etc
 
 
-## How it works?
+# How it works?
+
+## Starting Point
 
 ![](https://i.imgur.com/9uxw6ge.png)
 
@@ -17,6 +19,8 @@ Start off you adventure by typing your name and choosing your starting pokemon. 
   4. Go West
   5. QUIT GAME
 
+
+## Battle Time
 
 ![](https://i.imgur.com/CQW2Sie.png)
 
@@ -39,16 +43,19 @@ These are the list of special attacks for each type
   - Ember (0-3 dmg)
   - Fire Blast (1-4 dmg)
   - Fire Punch (1-3 dmg)
+  
 **Water**
   - Water Gun (2-5 dmg)
   - Bubble Beam (1-3 dmg)
   - Waterfall (1-4 dmg)
+  
 **Grass**
   - Vine Whip (1-3 dmg)
   - Razor Leaf (2-4 dmg)
   - Solar Beam (0-5 dmg)
   
   
+## The City  
 ![](https://i.imgur.com/Pp2Q9PI.png)
 
 Head over to the city to see the Pokemon Hospital or the PokeCenter. Visit the Pokemon Hospital for free healthcare (only for pokemons)! Or make a stop at PokeCenter to stock up on Pokeballs or Healing Potions 
